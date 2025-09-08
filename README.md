@@ -1,11 +1,11 @@
 # Employee-Management-Database
-📊 Employee Management & Attendance Tracker (MySQL)
-📌 Project Overview
+Employee Management & Attendance Tracker (MySQL)
+Project Overview
 
 The Employee Management & Attendance Tracker is a MySQL database system designed to manage employee records, departments, roles, and track attendance effectively.
 It provides a scalable and optimized structure for organizations to handle employee lifecycle management, shift tracking, attendance logging, and report generation.
 
-🎯 Objectives
+Objectives
 
 Efficiently store and manage employee data.
 
@@ -17,7 +17,7 @@ Generate summary reports (monthly attendance, late arrivals, absentees).
 
 Maintain data integrity with foreign key relationships and cascading actions.
 
-🗂 Database Schema
+Database Schema
 
 The database consists of 4 core tables with relationships enforced using foreign keys:
 
@@ -26,8 +26,7 @@ departments	Stores company departments like HR, IT, Finance, etc.
 roles	Defines roles like Manager, Analyst, Developer, etc.
 employees	Maintains employee details and their assigned department/role.
 attendance	Tracks daily attendance logs for each employee.
-🔗 Relationships
-
+**Relationships**
 departments → employees
 
 One-to-Many (One department has many employees)
@@ -46,16 +45,16 @@ One-to-Many (One employee has many attendance records)
 
 ON DELETE CASCADE – Deletes attendance automatically if an employee record is deleted.
 
-📐 ER Diagram
+**ER Diagram**
 [Departments] 1 ----- * [Employees] * ----- 1 [Roles]
                                |
                                |
                                * 
                            [Attendance]
 
-⚙ Key Features
+**Key Features
 
-Normalization:
+Normalization:**
 
 Fully normalized to 3rd Normal Form (3NF) to prevent redundancy.
 
@@ -79,7 +78,7 @@ Indexes:
 
 Optimized indexing for faster queries and reporting.
 
-📜 Table Structure
+Table Structure
 1. departments
 Column	Type	Description
 department_id	INT (PK)	Unique identifier for each department
@@ -108,7 +107,7 @@ clock_in	TIME	Clock-in time
 clock_out	TIME	Clock-out time
 status	ENUM('P','A','L')	Present, Absent, Late
 total_hours	DECIMAL(5,2)	Total hours worked
-📝 Sample Constraints
+**Sample Constraints**
 
 UNIQUE (employee_id, attendance_date)
 Prevents multiple attendance entries for the same employee on the same day.
@@ -119,17 +118,8 @@ Automatically deletes attendance when the employee record is deleted.
 ON DELETE RESTRICT on department and role
 Prevents accidental deletion of departments or roles if employees exist.
 
-🚀 Future Enhancements
 
-Add shift management to handle flexible schedules.
-
-Integrate with biometric devices or web apps for real-time attendance logging.
-
-Build a front-end interface (e.g., Flutter or React).
-
-Advanced analytics dashboard using Power BI / Tableau.
-
-💾 How to Use
+How to Use
 
 Install MySQL 8.0+ and MySQL Workbench.
 
@@ -145,7 +135,7 @@ INSERT INTO departments (department_name) VALUES ('HR'), ('IT'), ('Finance'), ('
 
 Start adding employees and attendance logs.
 
-📊 Example Query
+Example Query
 
 Get monthly attendance summary per employee:
 
@@ -158,7 +148,7 @@ WHERE MONTH(a.attendance_date) = 8 AND YEAR(a.attendance_date) = 2025
 GROUP BY e.employee_id, e.first_name, e.last_name
 ORDER BY total_days_present DESC;
 
-📌 Tech Stack
+Tech Stack
 
 Database: MySQL 8.0+ (InnoDB)
 
